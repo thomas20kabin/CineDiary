@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Diary | CineDiary</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"
+            defer></script>
+</head>
+<body>
+    <nav class="navbar">
+        <a class="logo" href="/">Cine<span>Diary</span></a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/diary">My Diary</a>
+            <a href="/about">About</a>
+        </div>
+    </nav>
+
+    <main class="diary-container">
+        <p class="eyebrow">YOUR PERSONAL FILM JOURNAL</p>
+        <h1>My <span class="gold">Movie Diary</span></h1>
+        <p class="muted">Every film deserves a memory.</p>
+
+        <section class="diary-form-section">
+            <h2>Add a movie</h2>
+
+            <form action="{{ url_for('diary') }}" method="POST">
+                <label for="title">Movie title</label>
+                <input type="text" id="title" name="title"
+                       maxlength="100" required>
+
+                <label for="watched_date">Watched date</label>
+                <input type="date" id="watched_date"
+                       name="watched_date" required>
+
+                <label for="rating">Your rating</label>
+                <select id="rating" name="rating" required>
+                    <option value="">Choose a rating</option>
+                    <option value="1">1 - Poor</option>
+                    <option value="2">2 - Fair</option>
+                    <option value="3">3 - Good</option>
+                    <option value="4">4 - Great</option>
+                    <option value="5">5 - Excellent</option>
+                </select>
+
+                <label for="review">Your review</label>
+                <textarea id="review" name="review"
+                          rows="4" maxlength="2000"></textarea>
+
+                <button class="button" type="submit">
+                    Save to My Diary
+                </button>
+            </form>
+        </section>
+
+        <section class="entries-section">
+            <h2>Watched Films ({{ entries|length }})</h2>
+
+            {% for entry in entries %}
+                <article class="entry-card">
+                    <h3>{{ entry.title }}</h3>
+                    <p class="muted">
+                        Watched: {{ entry.watched_date }}
+                    </p>
+                    <p class="rating">
+                        {{ "★" * entry.rating }}{{ "☆" * (5 - entry.rating) }}
+                    </p>
+
+                    {% if entry.review %}
+                        <p class="review-text">{{ entry.review }}</p>
+                    {% endif %}
+
+                    <div class="entry-actions">
+                        <a class="edit-button"
+                           href="{{ url_for('edit_movie', entry_id=entry.id) }}">
+                            Edit
+                        </a>
+
+                        <form
+                            action="{{ url_for('delete_movie', entry_id=entry.id) }}"
+                            method="POST"
+                            onsubmit="return confirmDelete();">
+                            <button class="delete-button" type="submit">
+                                Delete
+                            </button>
+                        </form>
+                    </div>
+                </article>
+            {% else %}
+                <p class="muted">
+                    No movies yet. Add your first film above!
+                </p>
+            {% endfor %}
+        </section>
+    </main>
+
+    <footer>
+        <p>Made with love for cinema. © CineDiary</p>
+    </footer>
+</body>
+</html>

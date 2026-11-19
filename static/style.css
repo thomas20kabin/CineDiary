@@ -1,0 +1,542 @@
+
+:root {
+    --bg: #0b0b0d;
+    --surface: #151518;
+    --surface-light: #1d1d21;
+    --gold: #c9a45c;
+    --gold-light: #e7c77e;
+    --text: #f5f2ec;
+    --muted: #a4a0a0;
+    --border: #303034;
+    --danger: #ffb3b3;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.navbar {
+    min-height: 76px;
+    padding: 16px 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    border-bottom: 1px solid var(--border);
+    background: #101012;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.logo span,
+.gold {
+    color: var(--gold);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+}
+
+.nav-links a {
+    color: var(--muted);
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover,
+.text-link:hover {
+    color: var(--gold-light);
+}
+
+.hero {
+    min-height: 410px;
+    padding: 100px 8% 85px;
+    text-align: center;
+    background:
+        radial-gradient(ellipse at top, #292116 0%, #111113 46%, var(--bg) 78%);
+}
+
+.eyebrow {
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.hero h1 {
+    margin: 15px 0;
+    font-size: clamp(34px, 5vw, 58px);
+    line-height: 1.2;
+}
+
+.hero-description {
+    max-width: 570px;
+    margin: 0 auto 28px;
+    color: var(--muted);
+}
+
+.button {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 12px 22px;
+    border: 0;
+    border-radius: 5px;
+    background: var(--gold);
+    color: #111;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.button:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+}
+
+.featured-section {
+    padding: 45px 8% 75px;
+}
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.section-heading h2,
+.diary-container h1 {
+    margin-top: 0;
+}
+
+.text-link {
+    color: var(--gold);
+}
+
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.movie-card {
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.movie-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--gold);
+}
+
+.movie-poster {
+    min-height: 190px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background:
+        linear-gradient(145deg, #302719, #171719 65%, #111113);
+}
+
+.poster-icon {
+    font-size: 42px;
+}
+
+.poster-label {
+    color: var(--gold);
+    font-size: 11px;
+    letter-spacing: 4px;
+}
+
+.movie-info {
+    padding: 16px;
+}
+
+.movie-info h3 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.muted {
+    color: var(--muted);
+}
+
+.movie-info .muted {
+    margin: 5px 0;
+}
+
+.rating {
+    color: var(--gold);
+    letter-spacing: 2px;
+}
+
+.diary-container {
+    width: min(850px, 90%);
+    margin: 45px auto 75px;
+}
+
+.diary-container > .eyebrow {
+    margin-bottom: 8px;
+}
+
+.diary-form-section,
+.entries-section {
+    margin-top: 28px;
+    padding: 25px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+}
+
+.diary-form-section h2,
+.entries-section h2 {
+    margin-top: 0;
+}
+
+.diary-form-section form {
+    display: flex;
+    flex-direction: column;
+}
+
+.diary-form-section label {
+    margin: 13px 0 6px;
+    color: #dedbd4;
+    font-size: 14px;
+}
+
+.diary-form-section input,
+.diary-form-section select,
+.diary-form-section textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    outline: none;
+    background: #101012;
+    color: var(--text);
+    font: inherit;
+}
+
+.diary-form-section input:focus,
+.diary-form-section select:focus,
+.diary-form-section textarea:focus {
+    border-color: var(--gold);
+}
+
+.diary-form-section textarea {
+    resize: vertical;
+}
+
+.diary-form-section .button {
+    align-self: flex-start;
+    margin-top: 22px;
+}
+
+.entry-card {
+    margin-top: 16px;
+    padding: 20px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface-light);
+}
+
+.entry-card h3 {
+    margin: 0;
+    font-size: 21px;
+}
+
+.entry-card p {
+    overflow-wrap: anywhere;
+}
+
+.entry-card .rating {
+    margin: 8px 0;
+}
+
+.review-text {
+    white-space: pre-wrap;
+}
+
+.entry-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.edit-button,
+.delete-button {
+    display: inline-block;
+    padding: 9px 16px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.edit-button {
+    background: var(--gold);
+    color: #101010;
+}
+
+.delete-button {
+    border: 1px solid #713737;
+    background: #321919;
+    color: var(--danger);
+}
+
+.delete-button:hover {
+    background: #512323;
+}
+
+.entry-actions form {
+    margin: 0;
+}
+
+.cancel-link {
+    display: inline-block;
+    margin: 18px 0 0 12px;
+    color: var(--gold);
+}
+
+footer {
+    padding: 22px 8%;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    text-align: center;
+    font-size: 13px;
+}
+
+@media (max-width: 650px) {
+    .navbar {
+        padding: 15px 5%;
+        flex-direction: column;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 18px;
+    }
+
+    .hero {
+        padding: 75px 6%;
+    }
+
+    .featured-section {
+        padding: 35px 5%;
+    }
+
+    .movie-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .movie-poster {
+        min-height: 160px;
+    }
+
+    .section-heading {
+        align-items: flex-start;
+    }
+
+    .diary-form-section,
+    .entries-section {
+        padding: 18px;
+    }
+}
+
+/* ===== CineDiary Authentication Pages ===== */
+
+.auth-container {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 20px;
+    box-sizing: border-box;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 440px;
+    padding: 38px 34px;
+    box-sizing: border-box;
+
+    background: linear-gradient(
+        145deg,
+        rgba(35, 35, 35, 0.96),
+        rgba(15, 15, 15, 0.98)
+    );
+
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 22px;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.45),
+        0 0 25px rgba(212, 175, 55, 0.06);
+
+    transition: border-color 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+.auth-card:hover {
+    border-color: rgba(212, 175, 55, 0.65);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
+                0 0 35px rgba(212, 175, 55, 0.1);
+}
+
+.auth-card h1 {
+    margin: 10px 0 12px;
+    color: #ffffff;
+    font-size: clamp(30px, 5vw, 38px);
+    letter-spacing: -1px;
+}
+
+.auth-card .eyebrow {
+    color: #d4af37;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    line-height: 1.7;
+}
+
+.auth-description {
+    color: #b8b8b8;
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 28px;
+}
+
+.auth-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.auth-card label {
+    color: #e8e8e8;
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 8px;
+}
+
+.auth-card input {
+    width: 100%;
+    min-height: 48px;
+    padding: 13px 14px;
+    box-sizing: border-box;
+
+    color: #ffffff;
+    background: #171717;
+    border: 1px solid #383838;
+    border-radius: 10px;
+    outline: none;
+    font: inherit;
+
+    transition: border-color 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+.auth-card input::placeholder {
+    color: #777777;
+}
+
+.auth-card input:focus {
+    border-color: #d4af37;
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.12);
+}
+
+.auth-button {
+    width: 100%;
+    min-height: 49px;
+    margin-top: 18px;
+    padding: 13px 18px;
+
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #f0d778, #c49a25);
+    color: #151515;
+
+    font-size: 14px;
+    font-weight: 800;
+    cursor: pointer;
+
+    transition: transform 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+.auth-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(212, 175, 55, 0.2);
+}
+
+.auth-switch {
+    margin-top: 24px;
+    color: #b8b8b8;
+    font-size: 13px;
+    text-align: center;
+    line-height: 1.8;
+}
+
+.auth-card a {
+    color: #e4c45c;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.auth-card a:hover {
+    color: #ffe58a;
+    text-decoration: underline;
+}
+
+.flash-message {
+    padding: 12px 14px;
+    margin: 12px 0;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 9px;
+    background: rgba(212, 175, 55, 0.08);
+    color: #f0d778;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+@media (max-width: 480px) {
+    .auth-container {
+        min-height: 80vh;
+        padding: 28px 16px;
+    }
+
+    .auth-card {
+        padding: 28px 22px;
+        border-radius: 18px;
+    }
+}

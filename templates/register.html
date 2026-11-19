@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join CineDiary</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <a href="/" class="logo">CineDiary<span>.</span></a>
+        <div>
+            <a href="/">Home</a>
+            <a href="{{ url_for('login') }}">Login</a>
+        </div>
+    </nav>
+
+    <main class="auth-container">
+        <section class="auth-card">
+            <p class="eyebrow">YOUR MOVIE JOURNEY STARTS HERE</p>
+            <h1>Create Account</h1>
+            <p class="auth-description">
+                Keep your films, ratings and memories in one place.
+            </p>
+
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p class="flash-message">{{ message }}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            <form method="POST" action="{{ url_for('register') }}">
+                <label for="username">Username</label>
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    minlength="3"
+                    maxlength="50"
+                    required
+                    autocomplete="username"
+                    placeholder="Choose a username"
+                >
+
+                <label for="email">Email</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    maxlength="150"
+                    required
+                    autocomplete="email"
+                    placeholder="you@example.com"
+                >
+
+                <label for="password">Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    minlength="8"
+                    required
+                    autocomplete="new-password"
+                    placeholder="At least 8 characters"
+                >
+
+                <button type="submit" class="auth-button">
+                    Create My Account
+                </button>
+            </form>
+
+            <p class="auth-switch">
+                Already have an account?
+                <a href="{{ url_for('login') }}">Login</a>
+            </p>
+        </section>
+    </main>
+</body>
+</html>

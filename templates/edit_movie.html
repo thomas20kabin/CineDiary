@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Movie | CineDiary</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <a class="logo" href="/">Cine<span>Diary</span></a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/diary">My Diary</a>
+        </div>
+    </nav>
+
+    <main class="diary-container">
+        <p class="eyebrow">UPDATE YOUR MEMORY</p>
+        <h1>Edit <span class="gold">Movie</span></h1>
+
+        <section class="diary-form-section">
+            <form method="POST">
+                <label for="title">Movie title</label>
+                <input type="text" id="title" name="title"
+                       value="{{ entry.title }}" maxlength="100" required>
+
+                <label for="watched_date">Watched date</label>
+                <input type="date" id="watched_date"
+                       name="watched_date"
+                       value="{{ entry.watched_date }}" required>
+
+                <label for="rating">Your rating</label>
+                <select id="rating" name="rating" required>
+                    <option value="1" {% if entry.rating == 1 %}selected{% endif %}>1 - Poor</option>
+                    <option value="2" {% if entry.rating == 2 %}selected{% endif %}>2 - Fair</option>
+                    <option value="3" {% if entry.rating == 3 %}selected{% endif %}>3 - Good</option>
+                    <option value="4" {% if entry.rating == 4 %}selected{% endif %}>4 - Great</option>
+                    <option value="5" {% if entry.rating == 5 %}selected{% endif %}>5 - Excellent</option>
+                </select>
+
+                <label for="review">Your review</label>
+                <textarea id="review" name="review"
+                          rows="4" maxlength="2000">{{ entry.review }}</textarea>
+
+                <button class="button" type="submit">Update Movie</button>
+                <a class="cancel-link" href="{{ url_for('diary') }}">
+                    Cancel
+                </a>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>Made with love for cinema. © CineDiary</p>
+    </footer>
+</body>
+</html>

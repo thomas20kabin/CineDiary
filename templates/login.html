@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | CineDiary</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <a href="/" class="logo">CineDiary<span>.</span></a>
+        <div>
+            <a href="/">Home</a>
+            <a href="{{ url_for('register') }}">Register</a>
+        </div>
+    </nav>
+
+    <main class="auth-container">
+        <section class="auth-card">
+            <p class="eyebrow">WELCOME BACK, FILM LOVER</p>
+            <h1>Login</h1>
+            <p class="auth-description">
+                Continue your personal movie journey.
+            </p>
+
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p class="flash-message">{{ message }}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            <form method="POST" action="{{ url_for('login') }}">
+                <label for="username">Username or Email</label>
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    required
+                    autocomplete="username"
+                    placeholder="Enter username or email"
+                >
+
+                <label for="password">Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    required
+                    autocomplete="current-password"
+                    placeholder="Enter your password"
+                >
+
+                <button type="submit" class="auth-button">
+                    Login to CineDiary
+                </button>
+            </form>
+
+            <p class="auth-switch">
+                New to CineDiary?
+                <a href="{{ url_for('register') }}">Create an account</a>
+            </p>
+        </section>
+    </main>
+</body>
+</html>

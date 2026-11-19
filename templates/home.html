@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineDiary | Your Movie Journal</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"
+            defer></script>
+</head>
+<body>
+    <nav class="navbar">
+        <a class="logo" href="/">Cine<span>Diary</span></a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/diary">My Diary</a>
+            <a href="/about">About</a>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <p class="eyebrow">YOUR PERSONAL FILM JOURNAL</p>
+            <h1>Every film tells a <span class="gold">story.</span></h1>
+            <p class="hero-description">
+                Keep your movie memories alive.
+                Track what you watch, rate films and write your reviews.
+            </p>
+            <a class="button" href="{{ url_for('diary') }}">
+                Open My Diary
+            </a>
+        </section>
+
+        <section class="featured-section">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">YOUR CINEMA SPACE</p>
+                    <h2>Featured <span class="gold">Films</span></h2>
+                </div>
+                <a class="text-link" href="{{ url_for('diary') }}">
+                    My diary →
+                </a>
+            </div>
+
+            <div class="movie-grid">
+                {% for movie in movies %}
+                    <article class="movie-card">
+                        <div class="movie-poster">
+                            <span class="poster-icon">🎬</span>
+                            <span class="poster-label">CINEDIARY</span>
+                        </div>
+                        <div class="movie-info">
+                            <h3>{{ movie.title }}</h3>
+                            <p class="muted">{{ movie.genre }}</p>
+                            <p class="rating">{{ movie.rating }}</p>
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Made with love for cinema. © CineDiary</p>
+    </footer>
+</body>
+</html>
